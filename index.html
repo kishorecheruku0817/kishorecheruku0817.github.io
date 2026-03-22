@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kishore Cheruku – Senior Software Engineer</title>
+<title>Kishore Cheruku – Senior Backend Engineer</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -18,7 +18,6 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -30,18 +29,7 @@
     overflow-x: hidden;
   }
 
-  /* ── NOISE TEXTURE OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.4;
-  }
-
-  /* ── NAV ── */
+  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -50,27 +38,20 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.2rem 4rem;
-    background: rgba(247, 244, 238, 0.88);
+    background: rgba(247,244,238,0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
   }
-
   .nav-logo {
     font-family: 'DM Serif Display', serif;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: var(--ink);
     text-decoration: none;
     letter-spacing: -0.02em;
   }
-
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -78,33 +59,19 @@
     text-decoration: none;
     transition: color 0.2s;
   }
-
   .nav-links a:hover { color: var(--accent); }
 
-  /* ── HERO ── */
+  /* HERO */
   .hero {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.2fr 0.8fr;
     align-items: center;
     padding: 8rem 4rem 4rem;
     gap: 4rem;
-    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
   }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    right: -120px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(30,92,142,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
   .hero-eyebrow {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.78rem;
@@ -112,57 +79,44 @@
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 1.2rem;
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards 0.2s;
+    animation: fadeUp 0.6s ease both 0.1s;
   }
-
   .hero-name {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-size: clamp(3rem, 5.5vw, 5.2rem);
     line-height: 1.0;
     letter-spacing: -0.03em;
     color: var(--ink);
-    margin-bottom: 1rem;
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.35s;
+    margin-bottom: 1.2rem;
+    animation: fadeUp 0.7s ease both 0.25s;
   }
-
-  .hero-name em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
+  .hero-name em { font-style: italic; color: var(--accent); }
   .hero-tagline {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     color: var(--muted);
     max-width: 480px;
     margin-bottom: 2.5rem;
-    line-height: 1.7;
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.5s;
+    line-height: 1.75;
+    animation: fadeUp 0.7s ease both 0.4s;
   }
-
   .hero-cta {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.65s;
+    animation: fadeUp 0.7s ease both 0.55s;
   }
-
   .btn-primary {
     background: var(--ink);
     color: var(--cream);
     padding: 0.85rem 2rem;
     border-radius: 2px;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 500;
     letter-spacing: 0.04em;
     transition: background 0.2s, transform 0.15s;
   }
-  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
-
+  .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
   .btn-secondary {
     background: transparent;
     color: var(--ink);
@@ -170,30 +124,30 @@
     border-radius: 2px;
     border: 1.5px solid var(--ink);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     font-weight: 500;
     letter-spacing: 0.04em;
     transition: border-color 0.2s, color 0.2s;
   }
   .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
+  /* STAT CARDS */
   .hero-stats {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.75s;
+    gap: 1.5rem;
+    animation: fadeUp 0.7s ease both 0.65s;
   }
-
   .stat-card {
     background: white;
     border: 1px solid var(--border);
     border-radius: 4px;
-    padding: 1.8rem 2rem;
+    padding: 1.6rem 1.8rem;
     position: relative;
     overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
   }
-
+  .stat-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
   .stat-card::before {
     content: '';
     position: absolute;
@@ -201,191 +155,154 @@
     width: 3px;
     background: var(--accent2);
   }
-
   .stat-card.accent::before { background: var(--accent); }
-
+  .stat-card.green::before { background: #2e7d32; }
   .stat-number {
     font-family: 'DM Serif Display', serif;
-    font-size: 3rem;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
     line-height: 1;
     color: var(--ink);
     letter-spacing: -0.03em;
   }
-
   .stat-label {
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     color: var(--muted);
-    margin-top: 0.25rem;
-    letter-spacing: 0.06em;
+    margin-top: 0.3rem;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
   }
 
-  /* ── SECTIONS ── */
+  /* SECTIONS */
   section {
-    padding: 6rem 4rem;
+    padding: 5rem 4rem;
     max-width: 1200px;
     margin: 0 auto;
   }
-
   .section-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.75rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
   }
-
   .section-title {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
     letter-spacing: -0.02em;
     line-height: 1.1;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     color: var(--ink);
   }
 
-  /* ── SKILLS ── */
+  /* SKILLS GRID */
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 1.2rem;
   }
-
   .skill-group {
     background: white;
     border: 1px solid var(--border);
     border-radius: 4px;
-    padding: 1.8rem;
+    padding: 1.6rem;
     transition: box-shadow 0.2s, transform 0.2s;
   }
-
-  .skill-group:hover {
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-    transform: translateY(-2px);
-  }
-
+  .skill-group:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.07); transform: translateY(-2px); }
   .skill-group-title {
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--accent2);
     margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
+    padding-bottom: 0.7rem;
     border-bottom: 1px solid var(--border);
   }
-
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
   .tag {
     background: var(--tag-bg);
     color: var(--tag-color);
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    padding: 0.3rem 0.65rem;
+    font-size: 0.7rem;
+    padding: 0.28rem 0.6rem;
     border-radius: 2px;
-    letter-spacing: 0.02em;
   }
-
   .tag.learning {
     background: #fff3e0;
     color: #b85e00;
     border: 1px dashed #f0a060;
   }
 
-  /* ── EXPERIENCE ── */
+  /* TIMELINE */
   .timeline {
     position: relative;
     padding-left: 2rem;
   }
-
   .timeline::before {
     content: '';
     position: absolute;
-    left: 0; top: 0.5rem; bottom: 0;
+    left: 0; top: 0.6rem; bottom: 0;
     width: 1px;
     background: var(--border);
   }
-
   .timeline-item {
     position: relative;
-    padding-bottom: 3rem;
-    opacity: 0;
-    transform: translateX(-10px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    padding-bottom: 2.8rem;
   }
-
-  .timeline-item.visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
   .timeline-item::before {
     content: '';
     position: absolute;
-    left: -2.4rem;
-    top: 0.5rem;
-    width: 9px;
-    height: 9px;
+    left: -2.38rem;
+    top: 0.55rem;
+    width: 9px; height: 9px;
     border-radius: 50%;
     background: var(--accent);
     border: 2px solid var(--cream);
     box-shadow: 0 0 0 1px var(--accent);
   }
-
   .timeline-meta {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     color: var(--muted);
     letter-spacing: 0.08em;
     margin-bottom: 0.4rem;
   }
-
   .timeline-company {
     font-family: 'DM Serif Display', serif;
-    font-size: 1.4rem;
+    font-size: 1.35rem;
     letter-spacing: -0.01em;
     color: var(--ink);
     margin-bottom: 0.2rem;
   }
-
   .timeline-role {
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     font-weight: 500;
     color: var(--accent2);
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.7rem;
     letter-spacing: 0.03em;
   }
-
   .timeline-desc {
     font-size: 0.9rem;
     color: var(--muted);
-    line-height: 1.7;
-    max-width: 680px;
+    line-height: 1.75;
+    max-width: 700px;
   }
 
-  /* ── PROJECT ── */
+  /* PROJECT CARD */
   .project-card {
     background: white;
     border: 1px solid var(--border);
     border-radius: 4px;
-    padding: 3rem;
+    padding: 2.5rem;
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 2rem;
     align-items: start;
+    margin-bottom: 1.5rem;
     transition: box-shadow 0.25s;
   }
-
-  .project-card:hover {
-    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
-  }
-
+  .project-card:hover { box-shadow: 0 10px 36px rgba(0,0,0,0.09); }
   .project-badge {
     display: inline-flex;
     align-items: center;
@@ -393,13 +310,12 @@
     background: #e8f5e9;
     color: #2e7d32;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    padding: 0.3rem 0.75rem;
+    font-size: 0.7rem;
+    padding: 0.28rem 0.7rem;
     border-radius: 2px;
     margin-bottom: 1rem;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
   }
-
   .project-badge::before {
     content: '';
     width: 6px; height: 6px;
@@ -407,163 +323,146 @@
     background: #2e7d32;
     animation: pulse 2s infinite;
   }
-
   .project-title {
     font-family: 'DM Serif Display', serif;
-    font-size: 2rem;
+    font-size: 1.9rem;
     letter-spacing: -0.02em;
     color: var(--ink);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
   }
-
   .project-url {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     color: var(--accent2);
     text-decoration: none;
     letter-spacing: 0.04em;
     display: block;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.1rem;
   }
-
   .project-url:hover { text-decoration: underline; }
-
   .project-desc {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     color: var(--muted);
     line-height: 1.75;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.4rem;
   }
-
-  .project-stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
+  .project-stack { display: flex; flex-wrap: wrap; gap: 0.45rem; }
   .project-link {
     background: var(--ink);
     color: var(--cream);
-    padding: 1rem 1.5rem;
+    padding: 0.9rem 1.4rem;
     border-radius: 2px;
     text-decoration: none;
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     white-space: nowrap;
     transition: background 0.2s;
+    align-self: center;
   }
-
   .project-link:hover { background: var(--accent); }
 
-  /* ── ML LEARNING BANNER ── */
+  /* ML LEARNING BANNER */
   .learning-banner {
-    background: linear-gradient(135deg, #0f1117 0%, #1e2a3a 100%);
+    background: linear-gradient(135deg, #0f1117 0%, #1a2d42 100%);
     border-radius: 4px;
-    padding: 3rem;
+    padding: 2.5rem;
     color: white;
-    margin-top: 2rem;
     position: relative;
     overflow: hidden;
   }
-
-  .learning-banner::before {
+  .learning-banner::after {
     content: 'ML';
     position: absolute;
-    right: 2rem;
-    top: 50%;
+    right: 2rem; top: 50%;
     transform: translateY(-50%);
     font-family: 'DM Serif Display', serif;
-    font-size: 8rem;
-    color: rgba(255,255,255,0.04);
-    letter-spacing: -0.05em;
+    font-size: 9rem;
+    color: rgba(255,255,255,0.03);
     line-height: 1;
+    pointer-events: none;
   }
-
+  .learning-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(200,75,47,0.18);
+    color: #e88a6a;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.28rem 0.7rem;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(200,75,47,0.3);
+  }
   .learning-title {
     font-family: 'DM Serif Display', serif;
     font-size: 1.6rem;
     margin-bottom: 0.5rem;
     letter-spacing: -0.02em;
   }
-
   .learning-sub {
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 2rem;
+    line-height: 1.65;
+    max-width: 560px;
   }
-
-  .learning-progress {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    max-width: 500px;
-  }
-
-  .progress-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
+  .learning-progress { display: flex; flex-direction: column; gap: 1rem; max-width: 520px; }
+  .progress-row { display: flex; align-items: center; gap: 1rem; }
   .progress-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.7);
-    width: 140px;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.65);
+    width: 160px;
+    flex-shrink: 0;
+  }
+  .progress-track {
+    flex: 1;
+    height: 5px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #c84b2f, #e88a6a);
+    width: 0;
+    transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .progress-pct {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    color: rgba(255,255,255,0.4);
+    width: 36px;
+    text-align: right;
     flex-shrink: 0;
   }
 
-  .progress-bar {
-    flex: 1;
-    height: 4px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    border-radius: 2px;
-    background: linear-gradient(90deg, #c84b2f, #e88a6a);
-    width: 0%;
-    transition: width 1.5s ease 0.5s;
-  }
-
-  .progress-item.visible .progress-fill { width: var(--w); }
-
-  /* ── CONTACT ── */
+  /* CONTACT */
   .contact-section {
     background: var(--ink);
     color: var(--cream);
     padding: 6rem 4rem;
     text-align: center;
   }
-
   .contact-section .section-label { color: #c84b2f; }
-
   .contact-title {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
     letter-spacing: -0.03em;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
   }
-
   .contact-sub {
-    font-size: 1rem;
-    color: rgba(247,244,238,0.6);
+    font-size: 0.95rem;
+    color: rgba(247,244,238,0.55);
     margin-bottom: 2.5rem;
+    line-height: 1.7;
   }
-
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-
+  .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
   .contact-link {
     display: flex;
     align-items: center;
@@ -571,53 +470,44 @@
     color: var(--cream);
     text-decoration: none;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.82rem;
-    letter-spacing: 0.05em;
-    padding: 0.85rem 1.5rem;
-    border: 1px solid rgba(247,244,238,0.2);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    padding: 0.8rem 1.4rem;
+    border: 1px solid rgba(247,244,238,0.18);
     border-radius: 2px;
     transition: border-color 0.2s, color 0.2s;
   }
-
   .contact-link:hover { border-color: var(--accent); color: #e88a6a; }
 
-  /* ── DIVIDER ── */
-  .divider {
-    width: 100%;
-    height: 1px;
-    background: var(--border);
-    margin: 0 4rem;
-    max-width: calc(1200px - 8rem);
-  }
+  .full-divider { height: 1px; background: var(--border); }
 
-  /* ── ANIMATIONS ── */
+  /* ANIMATIONS */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(18px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
   @keyframes pulse {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
+    50% { opacity: 0.35; }
   }
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { gap: 1.5rem; }
-    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; }
-    .hero::after { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 3rem; }
     .hero-stats { flex-direction: row; flex-wrap: wrap; }
-    .stat-card { flex: 1; min-width: 140px; }
-    section { padding: 4rem 1.5rem; }
+    .stat-card { flex: 1; min-width: 130px; }
+    section { padding: 3.5rem 1.5rem; }
     .skills-grid { grid-template-columns: 1fr 1fr; }
     .project-card { grid-template-columns: 1fr; }
+    .project-link { width: fit-content; }
     .contact-section { padding: 4rem 1.5rem; }
   }
-
   @media (max-width: 600px) {
     .skills-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
+    .learning-banner::after { display: none; }
   }
 </style>
 </head>
@@ -636,12 +526,12 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-left">
-    <p class="hero-eyebrow">// Senior Software Engineer</p>
+  <div>
+    <p class="hero-eyebrow">// Senior Backend Engineer</p>
     <h1 class="hero-name">Kishore<br><em>Cheruku</em></h1>
     <p class="hero-tagline">
-      Full-stack engineer with 12+ years building enterprise web applications.
-      Specializing in Ruby on Rails, React, and AWS cloud infrastructure — now expanding into Machine Learning and Data Science.
+      Senior Backend Engineer with 13+ years designing, building, and scaling enterprise web applications —
+      from high-performance APIs to production cloud deployments. Currently expanding into Machine Learning and Data Science.
     </p>
     <div class="hero-cta">
       <a href="#project" class="btn-primary">View My Work</a>
@@ -650,19 +540,21 @@
   </div>
   <div class="hero-stats">
     <div class="stat-card">
-      <div class="stat-number">12+</div>
+      <div class="stat-number">13+</div>
       <div class="stat-label">Years of Experience</div>
     </div>
     <div class="stat-card accent">
       <div class="stat-number">6</div>
-      <div class="stat-label">Companies & Clients</div>
+      <div class="stat-label">Companies &amp; Clients</div>
     </div>
-    <div class="stat-card">
-      <div class="stat-number">AWS</div>
-      <div class="stat-label">Production Cloud Deployments</div>
+    <div class="stat-card green">
+      <div class="stat-number">End&#8209;to&#8209;End</div>
+      <div class="stat-label">From API to Deployment</div>
     </div>
   </div>
 </div>
+
+<div class="full-divider"></div>
 
 <!-- SKILLS -->
 <section id="skills">
@@ -689,19 +581,19 @@
         <span class="tag">Redux</span>
         <span class="tag">Node.js</span>
         <span class="tag">JavaScript</span>
-        <span class="tag">HTML5/CSS3</span>
+        <span class="tag">HTML5 / CSS3</span>
         <span class="tag">Bootstrap</span>
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Cloud & DevOps</div>
+      <div class="skill-group-title">Cloud &amp; DevOps</div>
       <div class="skill-tags">
         <span class="tag">AWS EC2</span>
         <span class="tag">AWS S3</span>
+        <span class="tag">AWS RDS</span>
         <span class="tag">Docker</span>
         <span class="tag">Heroku</span>
         <span class="tag">Nginx</span>
-        <span class="tag">Git</span>
         <span class="tag">CI/CD</span>
       </div>
     </div>
@@ -717,7 +609,7 @@
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Data & ML <span style="font-size:0.65rem;color:#b85e00;font-family:'JetBrains Mono',monospace;"> (learning)</span></div>
+      <div class="skill-group-title">Data &amp; ML <span style="font-size:0.62rem;color:#b85e00;font-family:'JetBrains Mono',monospace;">(learning)</span></div>
       <div class="skill-tags">
         <span class="tag learning">NumPy</span>
         <span class="tag learning">Pandas</span>
@@ -728,9 +620,10 @@
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-title">Methods & Tools</div>
+      <div class="skill-group-title">Methods &amp; Tools</div>
       <div class="skill-tags">
         <span class="tag">Agile / Scrum</span>
+        <span class="tag">Git / GitHub</span>
         <span class="tag">Jira</span>
         <span class="tag">Cucumber</span>
         <span class="tag">Capybara</span>
@@ -741,101 +634,129 @@
   </div>
 </section>
 
+<div class="full-divider"></div>
+
 <!-- EXPERIENCE -->
-<section id="experience" style="padding-top: 2rem;">
+<section id="experience">
   <p class="section-label">// Where I've worked</p>
   <h2 class="section-title">Experience</h2>
-
   <div class="timeline">
+
     <div class="timeline-item">
-      <div class="timeline-meta">SEP 2024 – PRESENT · BOSTON, MA</div>
-      <div class="timeline-company">State Street / Esvee Technologies</div>
+      <div class="timeline-meta">SEP 2024 – PRESENT &nbsp;·&nbsp; BOSTON, MA</div>
+      <div class="timeline-company">State Street &nbsp;/&nbsp; Esvee Technologies</div>
       <div class="timeline-role">Senior Software Engineer</div>
-      <div class="timeline-desc">Building and maintaining financial services web applications for one of the world's largest custodian banks. Ruby on Rails, React, TypeScript, PostgreSQL, AWS.</div>
+      <div class="timeline-desc">Building and maintaining financial services web applications for one of the world's largest custodian banks. Delivering features across the full stack using Ruby on Rails, React, TypeScript, and PostgreSQL in an Agile environment.</div>
     </div>
+
     <div class="timeline-item">
-      <div class="timeline-meta">JUN 2023 – AUG 2024 · CHANTILLY, VA</div>
-      <div class="timeline-company">Storable / Esvee Technologies</div>
+      <div class="timeline-meta">JUN 2023 – AUG 2024 &nbsp;·&nbsp; CHANTILLY, VA</div>
+      <div class="timeline-company">Storable &nbsp;/&nbsp; Esvee Technologies</div>
       <div class="timeline-role">Senior Software Engineer</div>
-      <div class="timeline-desc">Developed end-to-end features for a SaaS storage management platform. Focused on Rails performance, SQL optimization, and React frontend components.</div>
+      <div class="timeline-desc">Developed end-to-end features for a SaaS storage management platform. Led Rails performance improvements, SQL query optimization, and React frontend component development.</div>
     </div>
+
     <div class="timeline-item">
-      <div class="timeline-meta">FEB 2022 – MAY 2023 · CHANTILLY, VA</div>
-      <div class="timeline-company">Align Technology / Esvee Technologies</div>
+      <div class="timeline-meta">FEB 2022 – MAY 2023 &nbsp;·&nbsp; CHANTILLY, VA</div>
+      <div class="timeline-company">Align Technology &nbsp;/&nbsp; Esvee Technologies</div>
       <div class="timeline-role">Senior Software Engineer</div>
-      <div class="timeline-desc">Maintained customer account portals for a global medical device company. Implemented OAuth 2.0 Apple Auth, third-party API integrations (Twilio, Stripe), and PostgreSQL schema design.</div>
+      <div class="timeline-desc">Maintained customer account portals for a global medical device company. Implemented Apple OAuth 2.0 authentication, third-party API integrations (Twilio, Stripe), and designed PostgreSQL schemas with stored procedures.</div>
     </div>
+
     <div class="timeline-item">
-      <div class="timeline-meta">APR 2019 – FEB 2022 · HYDERABAD</div>
+      <div class="timeline-meta">APR 2019 – FEB 2022 &nbsp;·&nbsp; HYDERABAD, INDIA</div>
       <div class="timeline-company">Copart (CITC)</div>
       <div class="timeline-role">Senior Software Engineer</div>
-      <div class="timeline-desc">Full-stack developer on a global vehicle auction platform. Led AWS infrastructure setup (EC2, S3, ELB, VPC) and migrated a Rails-based testing framework to Python.</div>
+      <div class="timeline-desc">Full-stack developer on a global vehicle auction platform operating in 11 countries. Configured AWS infrastructure (EC2, S3, ELB, VPC) in production, and led a 6-month migration of a Rails testing framework to Python.</div>
     </div>
+
     <div class="timeline-item">
-      <div class="timeline-meta">OCT 2017 – APR 2019 · HYDERABAD</div>
+      <div class="timeline-meta">OCT 2017 – APR 2019 &nbsp;·&nbsp; HYDERABAD, INDIA</div>
       <div class="timeline-company">WATI</div>
       <div class="timeline-role">Senior Software Engineer</div>
-      <div class="timeline-desc">Maintained legacy Rails 4.2 apps, built report generation pipelines, and configured AWS deployment infrastructure.</div>
+      <div class="timeline-desc">Administered and enhanced legacy Rails 4.2 applications, built report generation pipelines, and managed AWS deployment infrastructure including EC2, S3, and Route 53.</div>
     </div>
+
     <div class="timeline-item">
-      <div class="timeline-meta">JAN 2014 – SEP 2017 · HYDERABAD</div>
+      <div class="timeline-meta">JAN 2014 – SEP 2017 &nbsp;·&nbsp; HYDERABAD, INDIA</div>
       <div class="timeline-company">Nfinity</div>
       <div class="timeline-role">Software Engineer</div>
-      <div class="timeline-desc">Built full-stack Rails applications for Apple client systems with BDD methodology, OmniAuth 2.0, AngularJS, and multi-database integrations.</div>
+      <div class="timeline-desc">Built full-stack Rails applications for Apple client systems using BDD with Capybara, OmniAuth 2.0 authentication, AngularJS, and multi-database integrations (Oracle, MySQL, PostgreSQL).</div>
     </div>
+
+    <div class="timeline-item" style="padding-bottom:0">
+      <div class="timeline-meta">JAN 2013 – DEC 2013 &nbsp;·&nbsp; HYDERABAD, INDIA</div>
+      <div class="timeline-company">Greenapps</div>
+      <div class="timeline-role">Java Developer</div>
+      <div class="timeline-desc">Developed J2EE applications using Spring MVC, Spring Batch, Spring Security, Struts, and JDBC. Implemented design patterns and configured WebSphere application server deployments.</div>
+    </div>
+
   </div>
 </section>
 
+<div class="full-divider"></div>
+
 <!-- PROJECT -->
-<section id="project" style="padding-top: 2rem;">
+<section id="project">
   <p class="section-label">// What I've built</p>
   <h2 class="section-title">Project</h2>
 
   <div class="project-card">
     <div>
-      <div class="project-badge">Live & Deployed</div>
+      <div class="project-badge">Live &amp; Deployed</div>
       <h3 class="project-title">DataInsights Platform</h3>
       <a href="http://datainsights.it.com" target="_blank" class="project-url">datainsights.it.com ↗</a>
       <p class="project-desc">
-        A personal data insights web application I designed, built, and deployed from scratch.
-        The project combines my existing expertise in cloud infrastructure with my growing interest in data science —
-        containerized with Docker and hosted on AWS EC2.
+        A personal data insights web application I designed, built, and deployed from scratch —
+        combining cloud infrastructure expertise with a growing interest in data science.
+        Containerized with Docker and hosted on AWS EC2.
       </p>
       <div class="project-stack">
         <span class="tag">Python</span>
         <span class="tag">AWS EC2</span>
         <span class="tag">Docker</span>
-        <span class="tag">Data Visualization</span>
         <span class="tag">Pandas</span>
+        <span class="tag">Data Visualization</span>
       </div>
     </div>
     <a href="http://datainsights.it.com" target="_blank" class="project-link">Visit ↗</a>
   </div>
 
+  <!-- ML LEARNING BANNER -->
   <div class="learning-banner" id="learning-banner">
-    <div class="project-badge" style="background:rgba(200,75,47,0.15);color:#e88a6a;border-color:rgba(200,75,47,0.3);">Currently Learning</div>
+    <div class="learning-badge">Currently Learning</div>
     <h3 class="learning-title">Machine Learning Journey</h3>
-    <p class="learning-sub">Pursuing a deliberate transition into data engineering and ML-integrated development, building on 12 years of full-stack experience.</p>
+    <p class="learning-sub">Building on 13 years of backend engineering to expand into data science and ML-integrated development. Completed core Python data stack — now studying ML fundamentals.</p>
     <div class="learning-progress">
-      <div class="progress-item" style="--w:100%">
+      <div class="progress-row">
         <span class="progress-label">Python</span>
-        <div class="progress-bar"><div class="progress-fill"></div></div>
+        <div class="progress-track"><div class="progress-fill" data-width="100"></div></div>
+        <span class="progress-pct">100%</span>
       </div>
-      <div class="progress-item" style="--w:95%">
-        <span class="progress-label">NumPy / Pandas</span>
-        <div class="progress-bar"><div class="progress-fill"></div></div>
+      <div class="progress-row">
+        <span class="progress-label">NumPy &amp; Pandas</span>
+        <div class="progress-track"><div class="progress-fill" data-width="95"></div></div>
+        <span class="progress-pct">95%</span>
       </div>
-      <div class="progress-item" style="--w:90%">
-        <span class="progress-label">Matplotlib / Seaborn</span>
-        <div class="progress-bar"><div class="progress-fill"></div></div>
+      <div class="progress-row">
+        <span class="progress-label">Matplotlib &amp; Seaborn</span>
+        <div class="progress-track"><div class="progress-fill" data-width="90"></div></div>
+        <span class="progress-pct">90%</span>
       </div>
-      <div class="progress-item" style="--w:60%">
+      <div class="progress-row">
+        <span class="progress-label">Mathematics</span>
+        <div class="progress-track"><div class="progress-fill" data-width="75"></div></div>
+        <span class="progress-pct">75%</span>
+      </div>
+      <div class="progress-row">
         <span class="progress-label">ML Fundamentals</span>
-        <div class="progress-bar"><div class="progress-fill"></div></div>
+        <div class="progress-track"><div class="progress-fill" data-width="60"></div></div>
+        <span class="progress-pct">60%</span>
       </div>
-      <div class="progress-item" style="--w:45%">
+      <div class="progress-row">
         <span class="progress-label">Linear Regression</span>
-        <div class="progress-bar"><div class="progress-fill"></div></div>
+        <div class="progress-track"><div class="progress-fill" data-width="45"></div></div>
+        <span class="progress-pct">45%</span>
       </div>
     </div>
   </div>
@@ -845,33 +766,48 @@
 <div class="contact-section" id="contact">
   <p class="section-label">// Let's connect</p>
   <h2 class="contact-title">Open to Opportunities</h2>
-  <p class="contact-sub">Available for Senior Software Engineer roles in full-stack, Rails, or data-oriented positions.</p>
+  <p class="contact-sub">Available for Senior Backend Engineer roles — APIs, web applications, and data-oriented positions.</p>
   <div class="contact-links">
-    <a href="/cdn-cgi/l/email-protection#dab1b3a9b2b5a8bfb9b2eae2ebed9abdb7bbb3b6f4b9b5b7" class="contact-link">✉ <span class="__cf_email__" data-cfemail="543f3d273c3b2631373c646c6563143339353d387a373b39">[email&#160;protected]</span></a>
+    <a href="mailto:kishorech0817@gmail.com" class="contact-link">✉ kishorech0817@gmail.com</a>
     <a href="tel:5713157932" class="contact-link">☎ (571) 315-7932</a>
     <a href="https://www.linkedin.com/in/kishore-cheruku-33268298/" target="_blank" class="contact-link">in LinkedIn</a>
     <a href="http://datainsights.it.com" target="_blank" class="contact-link">⟡ datainsights.it.com</a>
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Scroll reveal for timeline
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
+<script>
+  // Animate progress bars when banner scrolls into view
+  function animateBars() {
+    document.querySelectorAll('.progress-fill').forEach(function(bar) {
+      var w = bar.getAttribute('data-width');
+      if (w) bar.style.width = w + '%';
     });
-  }, { threshold: 0.15 });
+  }
 
-  document.querySelectorAll('.timeline-item').forEach((el, i) => {
-    el.style.transitionDelay = (i * 0.08) + 's';
-    observer.observe(el);
+  var banner = document.getElementById('learning-banner');
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          setTimeout(animateBars, 200);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    if (banner) obs.observe(banner);
+  } else {
+    // Fallback for older browsers
+    setTimeout(animateBars, 800);
+  }
+
+  // Also fire on load in case banner is already visible
+  window.addEventListener('load', function() {
+    if (banner) {
+      var r = banner.getBoundingClientRect();
+      if (r.top < window.innerHeight) setTimeout(animateBars, 400);
+    }
   });
-
-  // Progress bars on scroll
-  const progressObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.querySelectorAll('.progress-item').forEach(item => item.
+</script>
+</body>
+</html>
